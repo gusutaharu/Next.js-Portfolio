@@ -3,8 +3,20 @@
  * https://jestjs.io/docs/configuration
  */
 
+import type { Config } from 'jest';
+
+import nextJest from 'next/jest.js';
+
+const createJestConfig = nextJest({
+  // テスト環境でnext.config.jsと.envファイルを読み込むためにNext.jsアプリへのパスを提供します
+  dir: './',
+});
+
 /** @type {import('jest').Config} */
-const config = {
+const config: Config = {
+  testEnvironment: 'jsdom',
+  // 各テスト実行前にさらにセットアップオプションを追加
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
   // All imported modules in your tests should be mocked automatically
   // automock: false,
 
@@ -123,7 +135,7 @@ const config = {
   // Automatically restore mock state and implementation before every test
   // restoreMocks: false,
 
-  // The root directory that Jest should scan for tests and modules within
+  // The root directory that Jest should scan for tests and modules wifthin
   // rootDir: undefined,
 
   // A list of paths to directories that Jest should use to search for files in
@@ -196,5 +208,4 @@ const config = {
   // Whether to use watchman for file crawling
   // watchman: true,
 };
-
-module.exports = config;
+export default createJestConfig(config);
