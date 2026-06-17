@@ -1,9 +1,7 @@
 @use 'tailwindcss';
 
-:root {
-  $background: #ffffff;
-  $foreground: #171717;
-}
+$background: #ffffff;
+$foreground: #171717;
 
 body {
   background: $background;
