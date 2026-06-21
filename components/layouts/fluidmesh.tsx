@@ -1,20 +1,34 @@
 'use client';
 
 import { useFrame, useThree } from '@react-three/fiber';
-import { useMemo, useRef } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import * as THREE from 'three';
 
 export const FluidMesh = () => {
   const { viewport } = useThree();
   const meshRef = useRef<THREE.Mesh>(null);
 
+  //マウス座標の再レンダリング防止
+  const internalMouse = useRef(new THREE.Vector2(0, 0));
+
   const uniforms = useMemo(
     () => ({
       uTime: { value: 0 },
       uResolution: { value: new THREE.Vector2() },
+      uMouse: { value: new THREE.Vector2(0, 0) }, // マウス座標用のUniform
     }),
     [],
   );
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      internalMouse.current.x = (e.clientX / window.innerWidth) * 2 - 1;
+      internalMouse.current.y = -(e.clientY / window.innerHeight) * 2 + 1;
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
 
   useFrame((state) => {
     if (meshRef.current) {
@@ -24,6 +38,7 @@ export const FluidMesh = () => {
         state.size.width,
         state.size.height,
       );
+      material.uniforms.uMouse.value.lerp(internalMouse.current, 0.1);
     }
   });
   return (
@@ -41,6 +56,7 @@ export const FluidMesh = () => {
         fragmentShader={`
           uniform float uTime;
           uniform vec2 uResolution;
+          uniform vec2 uMouse;
           varying vec2 vUv;
 
           // 疑似乱数
@@ -72,9 +88,25 @@ export const FluidMesh = () => {
           }
 
           void main() {
-            vec2 uv = (vUv * 2.0 - 1.0) * uResolution.x / uResolution.y;
-            vec2 p = uv * 1.3;
-            float t = uTime * 0.15;
+            // 座標
+            float aspect = uResolution.x / uResolution.y;
+            vec2 uv = (vUv * 2.0 - 1.0);
+            vec2 m = uMouse;
+
+            // アスペクト比補正
+            uv.x *= aspect;
+            m.x *= aspect;
+
+            // マウスの光の計算
+            float dist = distance(uv, m);
+            float mStrength = smoothstep(0.8, 0.0, dist);
+            float light = pow(smoothstep(0.8, 0.0, dist), 2.0);
+
+            // 空間を歪ませる
+            vec2 distortion = (uv - m) * mStrength * 0.8;
+
+            vec2 p = (uv * 1.3) + distortion;
+            float t = uTime * 0.5;
 
             // ゆがみ
             vec2 q = vec2(
@@ -96,7 +128,7 @@ export const FluidMesh = () => {
                 noise(p + f_b * distort)
             );
 
-            // メインカラー
+            // メインのカラー
             float colorPhase = length(q) * 1.8 + f_g * 0.6;
             vec3 speColor = getPrismColor(colorPhase);
 
@@ -104,10 +136,14 @@ export const FluidMesh = () => {
             float bloom = smoothstep(-0.3, 0.9, f_g);
             vec3 waterColor = vec3(0.7, 0.9, 1.0);
 
-            // 最終カラーの組み立て
+            //最終カラーの組み立て
             vec3 color = mix(waterColor + 0.01, speColor, bloom);
             color += prism * speColor * pow(bloom, 4.0) * 0.25;
             color += smoothstep(0.4, 0.5, f_g) * prism * 0.15;
+
+            //マウスの光を足す
+            vec3 lightColor = vec3(0.5, 0.8, 1.0);
+            color += lightColor * light * 0.2;
 
             gl_FragColor = vec4(pow(color, vec3(1.1)), 1.0);
           }
