@@ -2,10 +2,17 @@
 
 $background: #ffffff;
 $foreground: #171717;
+$text-main: #01579b;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 body {
   background: $background;
-  color: $foreground;
+  color: $text-main;
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -17,4 +24,41 @@ body {
   height: 100vh;
   z-index: -1;
   pointer-events: none;
+}
+
+// header //
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 50px;
+}
+
+.logo {
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: right;
+  gap: 2rem;
+
+  li {
+    &:hover {
+      opacity: 0.4;
+      transition: all 0.3s ease;
+    }
+  }
 }
