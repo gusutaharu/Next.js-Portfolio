@@ -50,15 +50,20 @@ header {
   font-weight: bold;
 }
 
-.nav-links {
-  display: flex;
-  justify-content: right;
-  gap: 2rem;
+.nav-desktop {
+  ul {
+    display: flex;
+    justify-content: right;
+    gap: 2rem;
 
-  li {
-    &:hover {
-      opacity: 0.4;
-      transition: all 0.3s ease;
+    li {
+      &:hover {
+        opacity: 0.4;
+        transition: all 0.3s ease;
+      }
     }
+  }
+  @media (max-width: 768px) {
+    display: none;
   }
 }

@@ -9,7 +9,7 @@ export const Header = () => {
           Portfolio
         </Link>
         <nav className="nav-desktop">
-          <ul className="nav-links">
+          <ul>
             {NAV_ITEMS.map((item) => (
               <li key={item.name}>
                 <Link href={item.href}>{item.name}</Link>
