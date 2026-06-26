@@ -17,6 +17,11 @@ export const Header = () => {
             ))}
           </ul>
         </nav>
+        <button className="hamburger-btn" aria-label="Toggle navigation">
+          <span className="btn-bar"></span>
+          <span className="btn-bar"></span>
+          <span className="btn-bar"></span>
+        </button>
       </div>
     </header>
   );

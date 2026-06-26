@@ -67,3 +67,24 @@ header {
     display: none;
   }
 }
+
+.hamburger-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 32px;
+  height: 20px;
+  cursor: pointer;
+  z-index: 200;
+  @media (min-width: 769px) {
+    display: none;
+  }
+}
+
+.btn-bar {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #01579b;
+  transform-origin: center;
+}
