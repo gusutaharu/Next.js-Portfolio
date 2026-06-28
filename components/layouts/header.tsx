@@ -62,6 +62,7 @@ export const Header = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.nav
+            aria-label="Mobile navigation"
             className="nav-mobile"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
