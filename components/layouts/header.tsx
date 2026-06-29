@@ -25,7 +25,7 @@ export const Header = () => {
         <Link href="/" className="logo">
           Portfolio
         </Link>
-        <nav className="nav-desktop">
+        <nav className="nav-desktop" aria-label="Desktop navigation">
           <ul>
             {NAV_ITEMS.map((item) => (
               <li key={item.name}>
