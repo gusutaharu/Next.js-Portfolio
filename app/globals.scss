@@ -106,3 +106,43 @@ header {
     padding: 8px 0;
   }
 }
+
+// sections //
+
+section {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  padding: 0 5%;
+}
+
+// Hero section //
+
+#hero-section {
+  justify-content: center;
+}
+
+.top-message {
+  font-size: 8vw;
+  font-weight: bold;
+}
+
+.hero-sub {
+  display: flex;
+  p {
+    font-size: 1.5rem;
+    line-height: 40px;
+  }
+}
+
+.hero-links {
+  display: flex;
+  gap: 10px;
+}
+
+.circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #01579b;
+}
