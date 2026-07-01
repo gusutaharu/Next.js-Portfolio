@@ -1,3 +1,6 @@
+import { GithubIcon } from '../ui/githubicon';
+import { QiitaIcon } from '../ui/qiitaicon';
+
 export const Hero = () => {
   return (
     <section id="hero-section">
@@ -10,8 +13,8 @@ export const Hero = () => {
         <div className="hero-sub">
           <p>今、選ばれるものをつくる。</p>
           <div className="hero-links">
-            <div className="circle"></div>
-            <div className="circle"></div>
+            <GithubIcon />
+            <QiitaIcon />
           </div>
         </div>
       </div>

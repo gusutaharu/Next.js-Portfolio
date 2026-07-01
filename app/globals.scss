@@ -140,9 +140,9 @@ section {
   gap: 10px;
 }
 
-.circle {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-color: #01579b;
+.link-icon {
+  transition-duration: 300ms;
+  &:hover {
+    opacity: 0.4;
+  }
 }
