@@ -4,6 +4,7 @@ import { SiQiita } from 'react-icons/si';
 export const QiitaIcon = () => {
   return (
     <Link
+      aria-label="Qiita"
       href="https://qiita.com/gusutaharu"
       target="_blank"
       rel="noopener noreferrer"

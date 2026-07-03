@@ -4,6 +4,7 @@ import { FaGithub } from 'react-icons/fa';
 export const GithubIcon = () => {
   return (
     <Link
+      aria-label="GitHub"
       href="https://github.com/gusutaharu"
       target="_blank"
       rel="noopener noreferrer"
