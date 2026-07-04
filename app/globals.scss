@@ -114,13 +114,20 @@ section {
   display: flex;
   flex-direction: column;
   padding: 0 5%;
+  justify-content: center;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.section-subtitle {
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
 // Hero section //
-
-#hero-section {
-  justify-content: center;
-}
 
 .top-message {
   font-size: 8vw;
