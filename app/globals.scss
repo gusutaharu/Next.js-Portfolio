@@ -195,3 +195,32 @@ section {
   margin-top: 4rem;
   text-align: center;
 }
+
+.skills-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1rem;
+  gap: 2rem;
+  .section-subtitle {
+    display: flex;
+    align-items: center;
+    &::after {
+      content: '';
+      flex-grow: 1;
+      height: 1px;
+      background: #01579b;
+      margin-left: 1rem;
+    }
+  }
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+}
+
+.skills-stack {
+  flex: 1;
+}
+
+.qualifications {
+  flex: 1;
+}
