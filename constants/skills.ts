@@ -1,0 +1,15 @@
+export const SKILL_STACK = [
+  'HTML',
+  'CSS',
+  'SCSS',
+  'JavaScript',
+  'TypeScript',
+  'React',
+  'Next.js',
+  'Three.js',
+  'TailwindCSS',
+  'Jest',
+  'playwright',
+  'GitHubActions',
+  'vercel',
+] as const;
