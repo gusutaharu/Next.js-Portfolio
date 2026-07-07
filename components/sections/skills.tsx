@@ -1,4 +1,4 @@
-import { SKILL_STACK } from '@/constants/skills';
+import { QUALIFICATIONS, SKILL_STACK } from '@/constants/skills';
 import { GithubData } from './dal/github-data';
 
 export const Skills = () => {
@@ -27,6 +27,14 @@ export const Skills = () => {
         </div>
         <div className="qualifications">
           <h3 className="section-subtitle">保有資格</h3>
+          <ul className="qualifications-list">
+            {QUALIFICATIONS.map((item) => (
+              <li className="qualification-item" key={item.name}>
+                <p>{item.name}</p>
+                <span>{item.date}</span>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>
