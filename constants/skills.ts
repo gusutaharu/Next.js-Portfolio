@@ -1,3 +1,5 @@
+export const MAX_CHART_COUNT = 5;
+
 export const SKILL_STACK = [
   'HTML',
   'CSS',

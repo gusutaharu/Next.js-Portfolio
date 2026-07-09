@@ -1,9 +1,7 @@
 import { QUALIFICATIONS, SKILL_STACK } from '@/constants/skills';
-import { GithubData } from './dal/github-data';
-import { getGitHubProfile } from '@/lib/github';
+import { GithubData } from './github-data';
 
 export const Skills = async () => {
-  const user = await getGitHubProfile();
   return (
     <section id="skills-section">
       <h2 className="section-title">Skills</h2>
@@ -36,26 +34,6 @@ export const Skills = async () => {
                 <span>{item.date}</span>
               </li>
             ))}
-          </ul>
-        </div>
-        <div>
-          {user && (
-            <div>
-              <h3>GitHub Profile</h3>
-              <p>Login: {user.login}</p>
-            </div>
-          )}
-          <h3>最近作ったリポジトリ:</h3>
-          <ul>
-            {user.repositories.nodes.map(
-              (repo: { name: string; url: string }) => (
-                <li key={repo.name}>
-                  <a href={repo.url} target="_blank" rel="noopener noreferrer">
-                    {repo.name}
-                  </a>
-                </li>
-              ),
-            )}
           </ul>
         </div>
       </div>
