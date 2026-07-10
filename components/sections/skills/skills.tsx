@@ -1,5 +1,7 @@
 import { QUALIFICATIONS, SKILL_STACK } from '@/constants/skills';
 import { GithubData } from './github-data';
+import { Suspense } from 'react';
+import { ChartsSkeleton } from '@/components/ui/skeletons';
 
 export const Skills = async () => {
   return (
@@ -8,7 +10,9 @@ export const Skills = async () => {
       <div>
         <h3 className="section-subtitle">GitHub data</h3>
         <div className="charts-container">
-          <GithubData />
+          <Suspense fallback={<ChartsSkeleton />}>
+            <GithubData />
+          </Suspense>
         </div>
         <p className="charts-description">
           ※自身のGithubアカウントのオープンリポジトリの使用言語率を元に算出。
