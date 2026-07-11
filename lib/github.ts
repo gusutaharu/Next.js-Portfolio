@@ -8,7 +8,7 @@ export type LanguageSkillDTO = {
 };
 
 export async function getTopLanguageSkills(): Promise<LanguageSkillDTO[]> {
-  const query = `
+  const GITHUB_GRAPHQL_QUERY = `
     query {
       viewer {
         login
@@ -30,18 +30,20 @@ export async function getTopLanguageSkills(): Promise<LanguageSkillDTO[]> {
     }
   `;
 
+  const GITHUB_API_URL = 'https://api.github.com/graphql';
+
   if (!process.env.GITHUB_TOKEN) {
     console.error('GitHub Token is missing.');
     return [];
   }
   try {
-    const res = await fetch('https://api.github.com/graphql', {
+    const res = await fetch(GITHUB_API_URL, {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ query }),
+      body: JSON.stringify({ query: GITHUB_GRAPHQL_QUERY }),
       next: { revalidate: 3600 },
     });
     if (!res.ok) {
