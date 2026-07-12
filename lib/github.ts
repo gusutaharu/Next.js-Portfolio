@@ -15,8 +15,7 @@ export async function getTopLanguageSkills(): Promise<LanguageSkillDTO[]> {
         repositories(first: 50, orderBy: {field: CREATED_AT, direction: DESC}) {
           nodes {
             name
-            languages(first: 10, orderBy: {field: SIZE, direction: DESC}) {
-              totalSize
+            languages(first: 100, orderBy: {field: SIZE, direction: DESC}) {
               edges {
                 size
                 node {
