@@ -2,10 +2,11 @@ import { QUALIFICATIONS, SKILL_STACK } from '@/constants/skills';
 import { GithubData } from './github-data';
 import { Suspense } from 'react';
 import { ChartsSkeleton } from '@/components/ui/skeletons';
+import { SkillsWrapper } from './SkillsWrapper';
 
 export const Skills = async () => {
   return (
-    <section id="skills-section">
+    <SkillsWrapper>
       <h2 className="section-title">Skills</h2>
       <div>
         <h3 className="section-subtitle">GitHub data</h3>
@@ -41,6 +42,6 @@ export const Skills = async () => {
           </ul>
         </div>
       </div>
-    </section>
+    </SkillsWrapper>
   );
 };
