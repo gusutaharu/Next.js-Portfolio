@@ -35,7 +35,10 @@ export async function getTopLanguageSkills(): Promise<LanguageSkillDTO[]> {
     console.error('GitHub Token is missing.');
     return [];
   }
-  if (process.env.GITHUB_TOKEN === 'mock-token') {
+  if (
+    process.env.GITHUB_TOKEN === 'mock-token' &&
+    process.env.NODE_ENV !== 'test'
+  ) {
     return [
       { name: 'TypeScript', ratio: 0.6 },
       { name: 'JavaScript', ratio: 0.4 },

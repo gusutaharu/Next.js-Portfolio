@@ -117,9 +117,10 @@ describe('getTopLanguageSkills', () => {
     const result = await getTopLanguageSkills();
 
     expect(result).toEqual([]);
-    expect(console.error).toHaveBeenCalledWith('GraphQL Errors:', [
-      { message: 'Bad credentials' },
-    ]);
+    expect(console.error).toHaveBeenCalledWith(
+      'GraphQL Detailed Errors:',
+      JSON.stringify([{ message: 'Bad credentials' }], null, 2),
+    );
   });
 
   it('境界値: リポジトリが空、または言語データが一切ない場合、空配列を返すこと', async () => {
