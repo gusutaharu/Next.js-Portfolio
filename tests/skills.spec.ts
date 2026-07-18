@@ -1,38 +1,32 @@
-// e2e/skills.spec.ts
 import { test, expect } from '@playwright/test';
 
-// GitHub APIのモック用モックデータ
-const mockGitHubResponse = {
-  data: {
-    viewer: {
-      repositories: {
-        nodes: [
-          {
-            name: 'repo-1',
-            languages: {
-              edges: [
-                { size: 600, node: { name: 'TypeScript' } },
-                { size: 400, node: { name: 'JavaScript' } },
-              ],
-            },
-          },
-        ],
-      },
-    },
-  },
-};
-
-test.describe('Skills Section E2E Tests', () => {
+test.describe('スキルセクション（E2Eテスト）', () => {
   test.beforeEach(async ({ page }) => {
-    await page.route('https://api.github.com/graphql', async (route) => {
-      await route.fulfill({
-        status: 200,
-        contentType: 'application/json',
-        body: JSON.stringify(mockGitHubResponse),
-      });
-    });
+    await page.goto('http://localhost:3000/?t=' + Date.now());
+  });
 
-    await page.goto('http://localhost:3000/');
+  test('モックデータに基づいてGitHubデータが表示されること', async ({
+    page,
+  }) => {
+    const skillsSection = page.locator('#skills-section');
+    await expect(skillsSection).toBeVisible();
+
+    await expect(skillsSection.locator('.section-title')).toHaveText('Skills');
+
+    const tsChart = page.locator('.chart-item', { hasText: 'TypeScript' });
+    const jsChart = page.locator('.chart-item', { hasText: 'JavaScript' });
+
+    await expect(tsChart).toBeVisible();
+    await expect(jsChart).toBeVisible();
+
+    await tsChart.locator('.skill-counter').scrollIntoViewIfNeeded();
+
+    await expect(tsChart.locator('.skill-counter')).toHaveText('60%', {
+      timeout: 5000,
+    });
+    await expect(jsChart.locator('.skill-counter')).toHaveText('40%', {
+      timeout: 5000,
+    });
   });
 
   test('技術スタック（SKILL_STACK）と保有資格（QUALIFICATIONS）が正しくリスト表示されていること', async ({
@@ -68,5 +62,18 @@ test.describe('Skills Section E2E Tests', () => {
     await skillsSection.scrollIntoViewIfNeeded();
 
     await expect(overlay).toHaveCSS('opacity', '1', { timeout: 5000 });
+  });
+  test('スキルセクションのビジュアルリグレッションテスト', async ({ page }) => {
+    const skillsSection = page.locator('#skills-section');
+
+    await skillsSection.scrollIntoViewIfNeeded();
+
+    await page.waitForTimeout(500);
+
+    await expect(skillsSection).toHaveScreenshot('skills-section.png', {
+      animations: 'disabled',
+      mask: [skillsSection.locator('.skill-counter')],
+      maxDiffPixelRatio: 0.02,
+    });
   });
 });

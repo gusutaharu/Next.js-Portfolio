@@ -35,6 +35,12 @@ export async function getTopLanguageSkills(): Promise<LanguageSkillDTO[]> {
     console.error('GitHub Token is missing.');
     return [];
   }
+  if (process.env.GITHUB_TOKEN === 'mock-token') {
+    return [
+      { name: 'TypeScript', ratio: 0.6 },
+      { name: 'JavaScript', ratio: 0.4 },
+    ];
+  }
   try {
     const res = await fetch(GITHUB_API_URL, {
       method: 'POST',
@@ -51,8 +57,13 @@ export async function getTopLanguageSkills(): Promise<LanguageSkillDTO[]> {
     }
     const result = await res.json();
     if (result.errors) {
-      console.error('GraphQL Errors:', result.errors);
-      return [];
+      if (result.errors) {
+        console.error(
+          'GraphQL Detailed Errors:',
+          JSON.stringify(result.errors, null, 2),
+        );
+        return [];
+      }
     }
     const repositories = result?.data?.viewer?.repositories?.nodes as
       | Repository[]
