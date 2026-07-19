@@ -30,7 +30,8 @@ jobs:
         run: npx playwright install --with-deps
       - name: Run Playwright tests
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: mock-token-e2e
+          NEXT_PUBLIC_APP_ENV: e2e
         run: npx playwright test --update-snapshots
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}

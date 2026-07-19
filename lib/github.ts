@@ -36,8 +36,8 @@ export async function getTopLanguageSkills(): Promise<LanguageSkillDTO[]> {
     return [];
   }
   if (
-    process.env.GITHUB_TOKEN === 'mock-token' &&
-    process.env.NODE_ENV !== 'test'
+    process.env.NEXT_PUBLIC_APP_ENV === 'e2e' ||
+    process.env.GITHUB_TOKEN === 'mock-token-e2e'
   ) {
     return [
       { name: 'TypeScript', ratio: 0.6 },
