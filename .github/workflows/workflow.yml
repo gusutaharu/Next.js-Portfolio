@@ -32,7 +32,7 @@ jobs:
         env:
           GITHUB_TOKEN: mock-token-e2e
           NEXT_PUBLIC_APP_ENV: e2e
-        run: npx playwright test --update-snapshots
+        run: npx playwright test
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
