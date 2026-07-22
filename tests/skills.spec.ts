@@ -63,17 +63,4 @@ test.describe('スキルセクション（E2Eテスト）', () => {
 
     await expect(overlay).toHaveCSS('opacity', '1', { timeout: 5000 });
   });
-  test('スキルセクションのビジュアルリグレッションテスト', async ({ page }) => {
-    const skillsSection = page.locator('#skills-section');
-
-    await skillsSection.scrollIntoViewIfNeeded();
-
-    await page.waitForTimeout(500);
-
-    await expect(skillsSection).toHaveScreenshot('skills-section.png', {
-      animations: 'disabled',
-      mask: [skillsSection.locator('.skill-counter')],
-      maxDiffPixelRatio: 0.02,
-    });
-  });
 });

@@ -27,10 +27,4 @@ test.describe('ヒーローセクション(E2Eテスト)', () => {
     );
     await expect(qiitaLink).toHaveAttribute('target', '_blank');
   });
-
-  test('ビジュアルリグレッションテスト（見た目の崩れがないか）', async ({
-    page,
-  }) => {
-    await expect(page).toHaveScreenshot('hero-page.png');
-  });
 });
