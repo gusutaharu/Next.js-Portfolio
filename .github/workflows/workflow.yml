@@ -7,6 +7,8 @@ jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -16,6 +18,8 @@ jobs:
         run: npm ci
 
       - name: Build Next.js app
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npm run build
 
       - name: Run Jest tests
@@ -25,7 +29,10 @@ jobs:
         if: ${{ always() }}
         run: npx playwright install --with-deps
       - name: Run Playwright tests
-        run: npx playwright test --update-snapshots
+        env:
+          GITHUB_TOKEN: mock-token-e2e
+          NEXT_PUBLIC_APP_ENV: e2e
+        run: npx playwright test
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
