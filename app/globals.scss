@@ -80,6 +80,7 @@ header {
 }
 
 .hamburger-btn {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -301,4 +302,5 @@ section {
   display: flex;
   gap: 0.2rem;
   font-size: 0.8rem;
+  flex-wrap: wrap;
 }
