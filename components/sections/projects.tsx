@@ -30,10 +30,10 @@ export const Projects = () => {
                 <p className="project-description">
                   sample description myproject app
                 </p>
-                <ul>
+                <ul className="project-technologies">
                   {project.technologies.map((tech) => (
                     <li key={tech}>
-                      <span>{tech}</span>
+                      <span>{tech} /</span>
                     </li>
                   ))}
                 </ul>
