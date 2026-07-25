@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 const PROJECTS = [
   {
     name: 'Sampleサイト',
@@ -13,7 +15,7 @@ const PROJECTS = [
       'supabase',
       'Figma',
     ],
-    video: '/',
+    video: '/ecsite.gif',
   },
 ];
 
@@ -38,7 +40,15 @@ export const Projects = () => {
                   ))}
                 </ul>
               </div>
-              <div></div>
+              <div className="video-wrapper">
+                <Image
+                  className="project-video"
+                  src={project.video}
+                  alt={project.name}
+                  fill
+                  unoptimized
+                />
+              </div>
             </li>
           ))}
         </ul>

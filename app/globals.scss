@@ -283,6 +283,17 @@ section {
   gap: 4rem;
 }
 
+.project-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.project-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+}
+
 .project-text {
   display: flex;
   flex-direction: column;
@@ -303,4 +314,15 @@ section {
   gap: 0.2rem;
   font-size: 0.8rem;
   flex-wrap: wrap;
+}
+
+.video-wrapper {
+  width: 60%;
+  position: relative;
+  aspect-ratio: 16 / 9;
+  margin: 0 auto;
+}
+
+.project-video {
+  object-fit: cover;
 }
