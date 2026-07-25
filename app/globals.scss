@@ -280,12 +280,14 @@ section {
 // Projects Section //
 
 #projects-section {
+  padding-top: 4rem;
   gap: 4rem;
 }
 
 .project-list {
   display: flex;
   flex-direction: column;
+  gap: 50rem;
 }
 
 .project-item {

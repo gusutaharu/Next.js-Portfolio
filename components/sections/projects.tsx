@@ -1,37 +1,17 @@
 import Image from 'next/image';
-
-const PROJECTS = [
-  {
-    name: 'Sampleサイト',
-    description: 'Sampleサイトについての説明です。',
-    technologies: [
-      'React',
-      'Next.js',
-      'TypeScript',
-      'Vercel',
-      'Jest',
-      'playwright',
-      'GitHubActions',
-      'supabase',
-      'Figma',
-    ],
-    video: '/ecsite.gif',
-  },
-];
+import { PROJECTS } from '@/constants/projects';
 
 export const Projects = () => {
   return (
     <section id="projects-section">
       <h2 className="section-title">Projects</h2>
       <div className="projects-container">
-        <ul>
+        <ul className="project-list">
           {PROJECTS.map((project) => (
             <li key={project.name} className="project-item">
               <div className="project-text">
-                <p className="project-name">sample</p>
-                <p className="project-description">
-                  sample description myproject app
-                </p>
+                <p className="project-name">{project.name}</p>
+                <p className="project-description">{project.description}</p>
                 <ul className="project-technologies">
                   {project.technologies.map((tech) => (
                     <li key={tech}>
