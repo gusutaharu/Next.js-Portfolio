@@ -16,19 +16,9 @@ export const PROJECTS = [
     video: '/ecsite.gif',
   },
   {
-    name: 'Sampleサイト2',
-    description: 'Sampleサイトについての説明です。',
-    technologies: [
-      'React',
-      'Next.js',
-      'TypeScript',
-      'Vercel',
-      'Jest',
-      'playwright',
-      'GitHubActions',
-      'supabase',
-      'Figma',
-    ],
+    name: 'ECサイト',
+    description: 'ショッピングサイトのサンプルです。',
+    technologies: ['FireBase', 'Jest', 'playwright', 'GitHubActions', 'Neon'],
     video: '/ecsite.gif',
   },
 ] as const;
