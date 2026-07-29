@@ -80,6 +80,7 @@ header {
 }
 
 .hamburger-btn {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -125,7 +126,7 @@ section {
   min-height: 100svh;
   display: flex;
   flex-direction: column;
-  padding: 0 5%;
+  padding: 10% 5%;
   justify-content: center;
 }
 
@@ -274,4 +275,57 @@ section {
   border-bottom: 1px solid $text-main;
   padding-bottom: 5px;
   font-size: 1.2rem;
+}
+
+// Projects Section //
+
+#projects-section {
+  padding-top: 4rem;
+  padding-bottom: 1000px;
+  gap: 4rem;
+}
+
+.project-list {
+  display: flex;
+  flex-direction: column;
+  gap: 50rem;
+}
+
+.project-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+}
+
+.project-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.project-name {
+  font-size: 1.7rem;
+  font-weight: bold;
+}
+
+.project-description {
+  font-size: 1.2rem;
+}
+
+.project-technologies {
+  display: flex;
+  gap: 0.2rem;
+  font-size: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.video-wrapper {
+  width: 60%;
+  position: relative;
+  aspect-ratio: 16 / 9;
+  margin: 0 auto;
+}
+
+.project-video {
+  object-fit: cover;
 }
