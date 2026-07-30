@@ -329,3 +329,43 @@ section {
 .project-video {
   object-fit: cover;
 }
+
+// Contact Section //
+
+#contact-section {
+  gap: 10rem;
+}
+
+.contact-area {
+  display: flex;
+  justify-content: center;
+}
+
+#contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 600px;
+}
+
+input {
+  background: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 15px;
+}
+
+textarea {
+  background: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  height: 10rem;
+}
+
+.submit-btn {
+  background-color: $text-main;
+  color: white;
+  padding: 0.5rem;
+}
