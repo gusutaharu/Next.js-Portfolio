@@ -14,3 +14,14 @@ export interface Repository {
     edges?: (LanguageEdge | null)[] | null;
   } | null;
 }
+
+export interface FormStateType {
+  success: boolean;
+  message: string;
+  errors?: Record<string, string[]>;
+  fields?: {
+    name?: string;
+    email?: string;
+    content?: string;
+  };
+}

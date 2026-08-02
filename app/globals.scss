@@ -341,6 +341,16 @@ section {
   justify-content: center;
 }
 
+.success-message {
+  color: green;
+  font-weight: bold;
+}
+
+.error-message {
+  color: red;
+  font-weight: bold;
+}
+
 #contact-form {
   display: flex;
   flex-direction: column;
