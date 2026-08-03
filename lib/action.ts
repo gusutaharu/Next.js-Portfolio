@@ -30,7 +30,12 @@ export async function sendEmail(
     return {
       success: false,
       message: '問い合わせに失敗しました.',
-      errors: validatedData.error.flatten().fieldErrors,
+      errors: validatedData.error.flatten((error) => error.message).fieldErrors,
+      fields: {
+        name: typeof fields.name === 'string' ? fields.name : '',
+        email: typeof fields.email === 'string' ? fields.email : '',
+        content: typeof fields.content === 'string' ? fields.content : '',
+      },
     };
   }
   const { name, email, content } = validatedData.data;

@@ -30,29 +30,32 @@ export const Contact = () => {
             </p>
           )}
           {state.errors?.name && (
-            <p className="text-xs text-red-500">{state.errors.name}</p>
+            <p className="error-message">{state.errors.name}</p>
           )}
           <input
             type="text"
             name="name"
             disabled={isPending}
+            defaultValue={state.fields?.name ?? ''}
             placeholder="name"
           />
           {state.errors?.email && (
-            <p className="text-xs text-red-500">{state.errors.email}</p>
+            <p className="error-message">{state.errors.email}</p>
           )}
           <input
             type="email"
             name="email"
             disabled={isPending}
+            defaultValue={state.fields?.email ?? ''}
             placeholder="email"
           />
           {state.errors?.content && (
-            <p className="text-xs text-red-500">{state.errors.content}</p>
+            <p className="error-message">{state.errors.content}</p>
           )}
           <textarea
             name="content"
             disabled={isPending}
+            defaultValue={state.fields?.content ?? ''}
             placeholder="message"
           ></textarea>
           <button type="submit" className="submit-btn" disabled={isPending}>
