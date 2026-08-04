@@ -1,6 +1,7 @@
 'use server';
 import { z } from 'zod';
 import { FormStateType } from './definitions';
+import { Resend } from 'resend';
 
 const formSchema = z.object({
   name: z
@@ -13,6 +14,7 @@ const formSchema = z.object({
     .min(5, { message: '内容は５文字以上入力してください' })
     .max(500, { message: '内容は500文字以内に収めてください' }),
 });
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function sendEmail(
   _prevState: FormStateType,
@@ -40,18 +42,30 @@ export async function sendEmail(
   }
   const { name, email, content } = validatedData.data;
   try {
-    console.log(
-      `問い合わせ内容: 名前: ${name}, メールアドレス: ${email}, 内容: ${content}`,
-    );
-    return {
-      success: true,
-      message: '問い合わせに成功しました。',
-    };
+    const { error } = await resend.emails.send({
+      from: 'onboarding@resend.dev',
+      to: `${process.env.ADMIN_EMAIL}`,
+      subject: `【ポートフォリオ】${name}様からの問い合わせ`,
+      html: `<p>名前: ${name}</p><p>メール: ${email}</p><p>内容: ${content}</p>`,
+    });
+    if (error) {
+      console.error('Resend API Error:', error);
+      return {
+        success: false,
+        message: 'メール送信に失敗しました。時間をおいて再度お試しください。',
+        fields: {
+          name,
+          email,
+          content,
+        },
+      };
+    }
+    return { success: true, message: '送信完了しました！' };
   } catch (error) {
     console.log(error);
     return {
       success: false,
-      message: '通信に失敗しました。',
+      message: '送信に失敗しました。',
     };
   }
 }
