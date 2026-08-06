@@ -3,6 +3,7 @@
 import { sendEmail } from '@/lib/action';
 import { useActionState } from 'react';
 import { FormStateType } from '@/lib/definitions';
+import { Turnstile } from '@marsidev/react-turnstile';
 
 const initialState: FormStateType = {
   success: false,
@@ -58,6 +59,9 @@ export const Contact = () => {
             defaultValue={state.fields?.content ?? ''}
             placeholder="message"
           ></textarea>
+          <div className="my-4">
+            <Turnstile siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!} />
+          </div>
           <button type="submit" className="submit-btn" disabled={isPending}>
             {isPending ? '送信中...' : '送信'}
           </button>
