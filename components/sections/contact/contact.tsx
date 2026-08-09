@@ -62,7 +62,12 @@ export const Contact = () => {
           <div className="my-4">
             <Turnstile siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!} />
           </div>
-          <button type="submit" className="submit-btn" disabled={isPending}>
+          <button
+            type="submit"
+            aria-label="送信ボタン"
+            className="submit-btn"
+            disabled={isPending}
+          >
             {isPending ? '送信中...' : '送信'}
           </button>
         </form>

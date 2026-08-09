@@ -17,7 +17,9 @@ describe('Contact Component', () => {
     expect(screen.getByPlaceholderText('name')).toBeInTheDocument();
     expect(screen.getByPlaceholderText('email')).toBeInTheDocument();
     expect(screen.getByPlaceholderText('message')).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: '送信' })).toBeInTheDocument();
+    expect(
+      screen.getByRole('button', { name: '送信ボタン' }),
+    ).toBeInTheDocument();
     expect(screen.getByTestId('mock-turnstile')).toBeInTheDocument();
   });
 
