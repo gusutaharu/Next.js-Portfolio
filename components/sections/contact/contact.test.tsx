@@ -11,7 +11,7 @@ jest.mock('@/lib/action', () => ({
 }));
 
 describe('Contact Component', () => {
-  it('1. 初期表示で各フォーム要素と Turnstile が正しく描画されること', () => {
+  it('正常系: 初期表示で各フォーム要素と Turnstile が正しく描画されること', () => {
     render(<Contact />);
 
     expect(screen.getByPlaceholderText('name')).toBeInTheDocument();
@@ -23,7 +23,7 @@ describe('Contact Component', () => {
     expect(screen.getByTestId('mock-turnstile')).toBeInTheDocument();
   });
 
-  it('2. ユーザーの入力を受け付けられること', () => {
+  it('正常系: ユーザーの入力を受け付けられること', () => {
     render(<Contact />);
 
     const nameInput = screen.getByPlaceholderText('name') as HTMLInputElement;

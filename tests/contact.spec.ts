@@ -5,7 +5,7 @@ test.describe('コンタクトセクション（E2Eテスト）', () => {
     await page.goto('/');
   });
 
-  test('Contactセクションが正常に表示されること', async ({ page }) => {
+  test('正常系：入力からフォーム送信完了まで通過すること', async ({ page }) => {
     await page.fill('input[name="name"]', '山田太郎');
     await page.fill('input[name="email"]', 'test@example.com');
     await page.fill(
