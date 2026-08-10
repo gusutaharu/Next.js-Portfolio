@@ -82,6 +82,7 @@ export default defineConfig({
       TURNSTILE_SECRET_KEY: '1x0000000000000000000000000000000AA',
       GITHUB_TOKEN: 'mock-token-e2e',
       ADMIN_EMAIL: 'test@example.com',
+      RESEND_API_KEY: 'mock-resend-key',
     },
   },
 });
