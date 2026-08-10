@@ -12,6 +12,11 @@ test.describe('コンタクトセクション（E2Eテスト）', () => {
       'textarea[name="content"]',
       'テストのお問い合わせ内容です。',
     );
+
+    await page.waitForSelector('input[name="cf-turnstile-response"][value]', {
+      state: 'attached',
+      timeout: 10000,
+    });
     const button = page.getByRole('button', { name: '送信ボタン' });
     await button.click();
     await expect(page.getByText('送信完了しました！')).toBeVisible();

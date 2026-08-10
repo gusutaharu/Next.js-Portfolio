@@ -10,7 +10,7 @@
     "prepare": "husky",
     "test": "jest",
     "test:watch": "jest --watch",
-    "e2e": "GITHUB_TOKEN=mock-token-e2e playwright test"
+    "e2e": "playwright test"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [

@@ -86,6 +86,14 @@ export async function sendEmail(
     };
   }
   const { name, email, content } = validatedData.data;
+  const isE2E = process.env.NEXT_PUBLIC_APP_ENV === 'e2e';
+  if (isE2E) {
+    console.log('[E2E Test] Email sending bypassed.');
+    return {
+      success: true,
+      message: '送信完了しました！',
+    };
+  }
   try {
     const { error } = await resend.emails.send({
       from: 'onboarding@resend.dev',
