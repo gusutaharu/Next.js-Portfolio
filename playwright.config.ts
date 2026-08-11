@@ -75,5 +75,14 @@ export default defineConfig({
     command: 'npm run dev',
     url: 'http://localhost:3000',
     reuseExistingServer: !process.env.CI,
+    env: {
+      ...process.env,
+      NEXT_PUBLIC_APP_ENV: 'e2e',
+      NEXT_PUBLIC_TURNSTILE_SITE_KEY: '1x00000000000000000000AA',
+      TURNSTILE_SECRET_KEY: '1x0000000000000000000000000000000AA',
+      GITHUB_TOKEN: 'mock-token-e2e',
+      ADMIN_EMAIL: 'test@example.com',
+      RESEND_API_KEY: 'mock-resend-key',
+    },
   },
 });
