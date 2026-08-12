@@ -379,3 +379,21 @@ textarea {
   color: white;
   padding: 0.5rem;
 }
+
+// Footer //
+
+footer {
+  background: oklch(23.301% 0.04108 264.979);
+  color: white;
+  padding: 50px 10% 5%;
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.copyright {
+  font-size: 0.9rem;
+  text-align: center;
+  
+}
