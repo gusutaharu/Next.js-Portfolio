@@ -1,7 +1,7 @@
 import { NAV_ITEMS } from '@/constants/navigations';
 import Link from 'next/link';
-import { GithubIcon } from '@/components/ui/githubicon';
-import { QiitaIcon } from '@/components/ui/qiitaicon';
+import { GithubIcon } from '@/components/ui/icons/githubicon';
+import { QiitaIcon } from '@/components/ui/icons/qiitaicon';
 
 export const Footer = () => {
   return (
