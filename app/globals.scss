@@ -50,12 +50,6 @@ header {
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-  li {
-    &:hover {
-      opacity: 0.4;
-      transition: all 0.3s ease;
-    }
-  }
 }
 
 .header-container {
@@ -66,6 +60,15 @@ header {
 
 .logo {
   font-weight: bold;
+}
+
+nav {
+  li {
+    &:hover {
+      opacity: 0.4;
+      transition: all 0.3s ease;
+    }
+  }
 }
 
 .nav-desktop {
@@ -389,11 +392,43 @@ footer {
   margin-top: 100px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.footer-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+}
+
+.footer-links {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.footer-icons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.footer-navlist {
+  ul {
+    display: flex;
+    gap: 2rem;
+  }
 }
 
 .copyright {
   font-size: 0.9rem;
   text-align: center;
-  
 }
