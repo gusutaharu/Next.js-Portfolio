@@ -17,17 +17,11 @@ export const Footer = () => {
               <QiitaIcon />
             </div>
           </div>
-          <nav className="footer-navlist">
+          <nav aria-label="Footer navigation" className="footer-navlist">
             <ul>
               {NAV_ITEMS.map((item) => (
                 <li key={item.name}>
-                  <Link
-                    href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {item.name}
-                  </Link>
+                  <Link href={item.href}>{item.name}</Link>
                 </li>
               ))}
             </ul>
