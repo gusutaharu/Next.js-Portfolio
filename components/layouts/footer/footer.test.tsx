@@ -9,7 +9,7 @@ describe('Footer Component', () => {
 
     const footerLogo = screen.getByRole('link', { name: 'gusutaharu' });
     expect(footerLogo).toBeInTheDocument();
-    expect(footerLogo).toHaveAttribute('href', '/');
+    expect(footerLogo).toHaveAttribute('href', '#hero-section');
 
     const githubLink = screen.getByRole('link', { name: 'GitHub' });
     expect(githubLink).toHaveAttribute('href', 'https://github.com/gusutaharu');

@@ -9,7 +9,7 @@ export const Footer = () => {
       <div className="footer-container">
         <div className="footer-nav">
           <div className="footer-links">
-            <Link href="/" className="logo-link">
+            <Link href="#hero-section" className="logo-link">
               <span className="logo-text">gusutaharu</span>
             </Link>
             <div className="footer-icons">
