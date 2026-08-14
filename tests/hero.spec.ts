@@ -13,14 +13,14 @@ test.describe('ヒーローセクション(E2Eテスト)', () => {
 
     await expect(page.locator('h1')).toContainText("gusutaharu'sportfolio");
 
-    const githubLink = page.locator('a[aria-label="GitHub"]');
+    const githubLink = heroSection.locator('a[aria-label="GitHub"]');
     await expect(githubLink).toHaveAttribute(
       'href',
       'https://github.com/gusutaharu',
     );
     await expect(githubLink).toHaveAttribute('target', '_blank');
 
-    const qiitaLink = page.locator('a[aria-label="Qiita"]');
+    const qiitaLink = heroSection.locator('a[aria-label="Qiita"]');
     await expect(qiitaLink).toHaveAttribute(
       'href',
       'https://qiita.com/gusutaharu',
