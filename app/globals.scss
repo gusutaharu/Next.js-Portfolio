@@ -381,6 +381,11 @@ textarea {
   background-color: $text-main;
   color: white;
   padding: 0.5rem;
+  &:hover {
+    opacity: 0.7;
+    font-weight: bold;
+    transition: all 0.3s ease;
+  }
 }
 
 // Footer //
