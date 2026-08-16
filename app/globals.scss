@@ -14,9 +14,22 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  min-height: 100dvh;
   background: $background;
   color: $text-main;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family:
+    var(--font-noto-sans-jp),
+    -apple-system,
+    sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-sub), sans-serif;
 }
 
 .canvas-container {
@@ -53,6 +66,7 @@ header {
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  font-family: var(--font-inter), sans-serif;
 }
 
 .header-container {
@@ -151,6 +165,7 @@ section {
 .top-message {
   font-size: 8vw;
   font-weight: bold;
+  font-family: var(--font-inter), sans-serif;
 }
 
 .hero-sub {
@@ -185,6 +200,7 @@ section {
   justify-content: center;
   flex-wrap: wrap;
   gap: 20px;
+  font-family: var(--font-inter), sans-serif;
 }
 
 .chart-item {
@@ -255,6 +271,7 @@ section {
   border: 1px solid $text-main;
   border-radius: 50px;
   padding: 10px 20px;
+  font-family: var(--font-inter), sans-serif;
   &:hover {
     background: $text-main;
     color: white;
@@ -323,6 +340,7 @@ section {
   gap: 0.2rem;
   font-size: 0.8rem;
   flex-wrap: wrap;
+  font-family: var(--font-inter), sans-serif;
 }
 
 .video-wrapper {
@@ -401,6 +419,7 @@ footer {
   margin-top: 100px;
   display: flex;
   flex-direction: column;
+  font-family: var(--font-inter), sans-serif;
 }
 
 .footer-container {
