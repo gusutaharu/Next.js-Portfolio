@@ -4,15 +4,7 @@ import {
   waitForElementToBeRemoved,
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { Header } from '@/components/layouts/header';
-
-jest.mock('../constants/navigations', () => ({
-  NAV_ITEMS: [
-    { name: 'Home', href: '/' },
-    { name: 'About', href: '/about' },
-    { name: 'Contact', href: '/contact' },
-  ],
-}));
+import { Header } from '@/components/layouts/header/header';
 
 describe('Header', () => {
   it('ボタンのクリックに応じてモバイルメニューがDOMに注入・削除されること', async () => {

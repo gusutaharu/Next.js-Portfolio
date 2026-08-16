@@ -1,5 +1,5 @@
-import { GithubIcon } from '../ui/icons/githubicon';
-import { QiitaIcon } from '../ui/icons/qiitaicon';
+import { GithubIcon } from '../../ui/icons/githubicon';
+import { QiitaIcon } from '../../ui/icons/qiitaicon';
 
 export const Hero = () => {
   return (

@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { Hero } from '@/components/sections/hero';
+import { Hero } from '@/components/sections/hero/hero';
 
 describe('Hero Section', () => {
   it('タイトルとサブタイトルが正しく表示されること', () => {
