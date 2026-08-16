@@ -31,7 +31,7 @@ describe('useVideoZoom', () => {
     expect(gsap.to).toHaveBeenCalledWith(
       expect.any(Element),
       expect.objectContaining({
-        scale: 2,
+        scale: 1.8,
         ease: 'none',
         scrollTrigger: expect.objectContaining({
           start: 'top top',
