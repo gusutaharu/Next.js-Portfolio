@@ -7,6 +7,9 @@ import { AnimatePresence, motion } from 'motion/react';
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const closeMenu = () => {
+    setIsOpen(false);
+  };
   const variantTop = {
     closed: { rotate: 0, y: 0 },
     opened: { rotate: 45, y: 9 },
@@ -72,7 +75,9 @@ export const Header = () => {
             <ul>
               {NAV_ITEMS.map((item) => (
                 <li key={item.name}>
-                  <Link href={item.href}>{item.name}</Link>
+                  <Link href={item.href} onClick={closeMenu}>
+                    {item.name}
+                  </Link>
                 </li>
               ))}
             </ul>

@@ -19,7 +19,7 @@ export const useVideoZoom = (
       if (!video || !wrapper) return;
 
       gsap.to(video, {
-        scale: 2,
+        scale: 1.8,
         ease: 'none',
         scrollTrigger: {
           trigger: container,
