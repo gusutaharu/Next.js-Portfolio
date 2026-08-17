@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test.describe('スキルセクション（E2Eテスト）', () => {
+test.describe('Skills Section（E2E）', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('http://localhost:3000/?t=' + Date.now());
   });
