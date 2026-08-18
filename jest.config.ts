@@ -7,6 +7,8 @@ import type { Config } from 'jest';
 
 import nextJest from 'next/jest.js';
 
+import { MotionGlobalConfig } from 'motion/react';
+
 const createJestConfig = nextJest({
   // テスト環境でnext.config.jsと.envファイルを読み込むためにNext.jsアプリへのパスを提供します
   dir: './',
@@ -208,4 +210,7 @@ const config: Config = {
   // Whether to use watchman for file crawling
   // watchman: true,
 };
+
+MotionGlobalConfig.skipAnimations = true;
+
 export default createJestConfig(config);

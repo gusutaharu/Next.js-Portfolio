@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { Inter, Plus_Jakarta_Sans, Noto_Sans_JP } from 'next/font/google';
 import './globals.scss';
 import Background from '@/components/layouts/background';
-import { Header } from '@/components/layouts/header';
+import { Header } from '@/components/layouts/header/header';
 import { Footer } from '@/components/layouts/footer/footer';
 
 const inter = Inter({

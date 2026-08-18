@@ -7,6 +7,8 @@ import { AnimatePresence, motion } from 'motion/react';
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const animateState = isOpen ? 'opened' : 'closed';
+
   const closeMenu = () => {
     setIsOpen(false);
   };
@@ -45,19 +47,19 @@ export const Header = () => {
           <motion.span
             className="btn-bar"
             variants={variantTop}
-            animate={isOpen ? 'opened' : 'closed'}
+            animate={animateState}
             transition={{ type: 'spring', stiffness: 260, damping: 20 }}
           ></motion.span>
           <motion.span
             className="btn-bar"
             variants={variantCenter}
-            animate={isOpen ? 'opened' : 'closed'}
+            animate={animateState}
             transition={{ duration: 0.2 }}
           ></motion.span>
           <motion.span
             className="btn-bar"
             variants={variantBottom}
-            animate={isOpen ? 'opened' : 'closed'}
+            animate={animateState}
             transition={{ type: 'spring', stiffness: 260, damping: 20 }}
           ></motion.span>
         </button>

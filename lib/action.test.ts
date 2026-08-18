@@ -72,6 +72,20 @@ describe('sendEmail (Server Action)', () => {
       content: 'text',
     });
   });
+  it('異常系: 入力値が上限文字数を超えている場合（51文字のname、501文字のcontent）', async () => {
+    const formData = new FormData();
+    formData.append('name', 'a'.repeat(51));
+    formData.append('email', 'test@example.com');
+    formData.append('content', 'a'.repeat(501));
+
+    const result = await sendEmail({ success: false, message: '' }, formData);
+
+    expect(result.success).toBe(false);
+    expect(result.errors?.name).toContain('名前は五十文字以内に収めてください');
+    expect(result.errors?.content).toContain(
+      '内容は500文字以内に収めてください',
+    );
+  });
 
   it('異常系: Turnstile トークンがない場合: チェック要求エラーを返すこと', async () => {
     const formData = new FormData();
@@ -127,5 +141,25 @@ describe('sendEmail (Server Action)', () => {
     expect(result.message).toBe(
       'メール送信に失敗しました。時間をおいて再度お試しください。',
     );
+  });
+  it('異常系: Resend API 呼び出し時に例外が発生した場合: catch ブロックで失敗レスポンスを返すこと', async () => {
+    const consoleSpy = jest.spyOn(console, 'log').mockImplementation(() => {});
+    global.fetch = jest.fn().mockResolvedValue({
+      json: jest.fn().mockResolvedValue({ success: true }),
+    } as unknown as Response);
+
+    mockSend.mockRejectedValueOnce(new Error('Resend Throw Error'));
+
+    const formData = new FormData();
+    formData.append('name', '山田太郎');
+    formData.append('email', 'test@example.com');
+    formData.append('content', 'テストのお問い合わせ内容です。');
+    formData.append('cf-turnstile-response', 'valid-token');
+
+    const result = await sendEmail({ success: false, message: '' }, formData);
+
+    expect(result.success).toBe(false);
+    expect(result.message).toBe('送信に失敗しました。');
+    consoleSpy.mockRestore();
   });
 });
