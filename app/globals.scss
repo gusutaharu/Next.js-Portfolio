@@ -207,14 +207,16 @@ section {
   text-align: center;
   width: 15%;
   position: relative;
+  flex-shrink: 0;
   @media (max-width: 768px) {
-    width: 30%;
+    width: 25%;
   }
 }
 
 .chart-svg {
   width: 100%;
   height: 100%;
+  max-width: 180px;
   rotate: -90deg;
   position: relative;
 }
