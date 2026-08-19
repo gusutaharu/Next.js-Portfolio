@@ -22,6 +22,7 @@ export const SkillChart = ({ value }: { value: number }) => {
         stroke="orange"
         initial={{ pathLength: 0 }}
         whileInView={{ pathLength: value }}
+        viewport={{ once: true, amount: 0.1 }}
         transition={{ duration: 2, ease: 'easeInOut' }}
       />
     </svg>
