@@ -3,12 +3,15 @@
 import { motion } from 'motion/react';
 
 export const SkillChart = ({ value }: { value: number }) => {
+  const radius = 50;
+  const circumference = 2 * Math.PI * radius;
+  const strokeDashoffset = circumference * (1 - value);
   return (
     <svg viewBox="0 0 120 120" className="chart-svg">
       <circle
         cx="60"
         cy="60"
-        r="50"
+        r={radius}
         strokeWidth="1"
         stroke="rgba(0, 0, 0, 0.1)"
         fill="none"
@@ -16,13 +19,14 @@ export const SkillChart = ({ value }: { value: number }) => {
       <motion.circle
         cx="60"
         cy="60"
-        r="50"
+        r={radius}
         strokeWidth="2"
         fill="transparent"
         stroke="orange"
-        initial={{ pathLength: 0 }}
-        whileInView={{ pathLength: value }}
-        viewport={{ once: true, amount: 0.1 }}
+        strokeDasharray={circumference}
+        initial={{ strokeDashoffset: circumference }}
+        whileInView={{ strokeDashoffset }}
+        viewport={{ amount: 0.1 }}
         transition={{ duration: 2, ease: 'easeInOut' }}
       />
     </svg>
