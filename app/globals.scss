@@ -222,6 +222,18 @@ section {
   overflow: visible !important;
 }
 
+.pc-cahrt {
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+.mobile-cahrt {
+  @media (min-width: 769px) {
+    display: none;
+  }
+}
+
 .skill-counter {
   position: absolute;
   inset: 0;
