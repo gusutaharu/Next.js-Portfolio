@@ -174,11 +174,18 @@ section {
     font-size: 1.5rem;
     line-height: 40px;
   }
+  @media (max-width: 450px) {
+    flex-direction: column;
+  }
 }
 
 .hero-links {
   display: flex;
   gap: 10px;
+  @media (max-width: 450px) {
+    padding: 1rem;
+    justify-content: end;
+  }
 }
 
 .link-icon {
