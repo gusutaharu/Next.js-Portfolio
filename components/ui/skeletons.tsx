@@ -27,3 +27,7 @@ export const ChartsSkeleton = () => {
     </>
   );
 };
+
+export const VideoSkeleton = () => {
+  return <div className="video-skeleton" />;
+};
