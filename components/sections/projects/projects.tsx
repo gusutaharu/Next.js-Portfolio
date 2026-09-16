@@ -1,6 +1,8 @@
 import { PROJECTS } from '@/constants/projects';
 import Image from 'next/image';
 import { ProjectVideoZoom } from './ProjectVideoZoom';
+import { Suspense } from 'react';
+import { VideoSkeleton } from '@/components/ui/skeletons';
 
 export const Projects = () => {
   return (
@@ -23,13 +25,16 @@ export const Projects = () => {
                   </ul>
                 </div>
                 <div className="video-wrapper">
-                  <Image
-                    className="project-video"
-                    src={project.video}
-                    alt={project.name}
-                    fill
-                    unoptimized
-                  />
+                  <Suspense fallback={<VideoSkeleton />}>
+                    <Image
+                      className="project-video"
+                      src={project.video}
+                      alt={project.name}
+                      fill
+                      unoptimized
+                      suppressHydrationWarning
+                    />
+                  </Suspense>
                 </div>
               </li>
             ))}
